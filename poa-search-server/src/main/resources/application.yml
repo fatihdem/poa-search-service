@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+adapter:
+    poa:
+      baseUrl: "http://localhost:8080"
+      connectionTimeout: 2000
+    account:
+      baseUrl: "http://localhost:8080"
+      connectionTimeout: 2000
+    creditcard:
+      baseUrl: "http://localhost:8080"
+      connectionTimeout: 2000
+    debitcard:
+      baseUrl: "http://localhost:8080"
+      connectionTimeout: 2000
+
+application:
+  security:
+    enabled: true

@@ -11,6 +11,8 @@ tags:
   description: "Access to debit card details"
 - name: "Credit Card"
   description: "Access to credit card details"
+- name: "Account"
+  description: "Get details of a given account"
 schemes:
 - "http"
 paths:
@@ -93,7 +95,44 @@ paths:
             $ref: "#/definitions/CreditCard"
         404:
           description: "Credit card not found"
+  /accounts/{id}:
+    get:
+      tags:
+        - "Account"
+      summary: "Get details of an account"
+      description: "Get details of a given account"
+      operationId: "getAccountDetail"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: "string"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Account"
+        404:
+          description: "Account not found"
 definitions:
+  Account:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      owner:
+        type: "string"
+      balance:
+        type: "integer"
+      created:
+        type: "string"
+        pattern: "DD-MM-YYYY"
+      ended:
+        type: "string"
+        pattern: "DD-MM-YYYY"
+#Created and ended doesn't comply with open API specifications so they are not dates
   PowerOfAttorneyReference:
     type: "object"
     properties:
@@ -132,6 +171,8 @@ definitions:
     properties:
       id:
         type: "string"
+      status:
+        $ref: "#/definitions/Status"
       cardNumber:
         type: "integer"
       sequenceNumber:
@@ -149,13 +190,15 @@ definitions:
     properties:
       id:
         type: "string"
+      status:
+        $ref: "#/definitions/Status"
       cardNumber:
         type: "integer"
       sequenceNumber:
         type: "integer"
       cardHolder:
         type: "string"
-      monhtlyLimit:
+      monthlyLimit:
         type: "integer"
   Limit:
     type: "object"
@@ -176,3 +219,6 @@ definitions:
   PeriodUnit:
     type: "string"
     enum: ["PER_DAY","PER_WEEK","PER_MONTH"]
+  Status:
+    type: "string"
+    enum: ["ACTIVE", "BLOCKED"]
