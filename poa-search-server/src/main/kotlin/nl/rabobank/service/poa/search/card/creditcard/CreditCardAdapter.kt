@@ -5,7 +5,6 @@ import nl.rabobank.service.poa.search.card.creditcard.model.CreditCard
 import nl.rabobank.service.poa.search.card.creditcard.model.internalize
 import nl.rabobank.service.poa.search.exception.DependencyFailedException
 import org.springframework.stereotype.Component
-import java.lang.Exception
 
 @Component
 class CreditCardAdapter(private val creditCardApi: CreditCardApi) {

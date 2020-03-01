@@ -4,12 +4,9 @@ import nl.rabobank.service.poa.search.detailedpowerofattorney.model.DetailedPowe
 import nl.rabobank.service.poa.search.endpoint.DetailedPowerOfAttorneyController
 import nl.rabobank.service.poa.search.exception.UnauthorizedResourceException
 import nl.rabobank.service.poa.search.util.isSecurityEnabled
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.support.SecurityContextProvider
 import org.springframework.core.env.Environment
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.RestController
-import java.security.Principal
 import nl.rabobank.service.poa.search.detailedpowerofattorney.DetailedPowerOfAttorneys as ExternalDetailedPowerOfAttorneys
 
 @RestController

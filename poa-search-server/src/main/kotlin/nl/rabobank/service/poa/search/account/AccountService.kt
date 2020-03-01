@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service
 class AccountService(private val accountAdapter: AccountAdapter) {
 
     fun getAccountDetails(accountId: Int): Account {
-        return accountAdapter.getAccountById(accountId.toString())
+        return accountAdapter.getAccountById(accountId)
     }
 }

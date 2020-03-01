@@ -16,9 +16,9 @@ data class Account (
         val created: LocalDate,
         val ended: LocalDate?
 ) : Exposable<ExposedAccount> {
-    constructor(account: ExternalAccount, id: String) : this(
-            id = id.toInt(),
-            iban = id.toInt().toIbanString(),
+    constructor(account: ExternalAccount, id: Int) : this(
+            id = id,
+            iban = id.toIbanString(),
             owner = account.owner,
             balance = account.balance,
             created = account.created.toLocalDate(),
@@ -41,7 +41,7 @@ data class Account (
     }
 }
 
-fun ExternalAccount.internalize(id: String) = Account(this, id)
+fun ExternalAccount.internalize(id: Int) = Account(this, id)
 
 private fun String.toLocalDate(): LocalDate = LocalDate.parse(this, DateTimeFormatter.ofPattern("dd-MM-yyyy"))
 

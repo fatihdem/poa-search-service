@@ -10,7 +10,7 @@ class PowerOfAttorneyService(private val powerOfAttorneyAdapter: PowerOfAttorney
     fun getPowerOfAttorneysByClientName(clientName: String): List<PowerOfAttorney> {
         val allPowerOfAttorneyIds = powerOfAttorneyAdapter.getAllPowerOfAttorneyReferences()
 
-        return allPowerOfAttorneyIds.parallelStream().map { powerOfAttorneyAdapter.getPowerOfAttorneyById(it.id) }
+        return allPowerOfAttorneyIds.parallelStream().map { powerOfAttorneyAdapter.getPowerOfAttorneyById(it) }
                 .filter { it.grantee == clientName || it.grantor == clientName }
                 .filter { isPowerOfAttorneyValid(it) }
                 .toList()

@@ -5,7 +5,6 @@ import nl.rabobank.service.poa.search.card.common.CardType
 import nl.rabobank.service.poa.search.card.common.expose
 import nl.rabobank.service.poa.search.card.common.internalize
 import nl.rabobank.service.poa.search.detailedpowerofattorney.ImmutableCard
-import nl.rabobank.service.poa.search.detailedpowerofattorney.Status
 import nl.rabobank.service.poa.search.util.Exposable
 import io.swagger.client.model.DebitCard as ExternalDebitCard
 import nl.rabobank.service.poa.search.detailedpowerofattorney.Card as ExposedDebitCard

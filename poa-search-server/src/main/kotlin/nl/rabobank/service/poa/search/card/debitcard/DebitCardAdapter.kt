@@ -5,7 +5,6 @@ import nl.rabobank.service.poa.search.card.debitcard.model.DebitCard
 import nl.rabobank.service.poa.search.card.debitcard.model.internalize
 import nl.rabobank.service.poa.search.exception.DependencyFailedException
 import org.springframework.stereotype.Component
-import java.lang.Exception
 
 @Component
 class DebitCardAdapter(private val debitCardApi: DebitCardApi) {

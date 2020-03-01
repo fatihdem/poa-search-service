@@ -16,7 +16,7 @@ fun Int.isValidAccountNumber(): Boolean {
 }
 
 fun Int.toIbanString(): String {
-    return if (isValidAccountNumber()) "NL23RABO$this" else throw InvalidAccountNumberException(this.toString())
+    return if (isValidAccountNumber()) "NL23RABO$this" else throw InvalidAccountNumberException(this)
 }
 
 fun String.toAccountNumber(): Int {

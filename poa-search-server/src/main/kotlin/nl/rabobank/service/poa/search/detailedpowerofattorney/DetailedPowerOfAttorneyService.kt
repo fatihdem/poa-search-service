@@ -28,6 +28,7 @@ class DetailedPowerOfAttorneyService(
 
             run {
                 powerOfAttorney.cards.parallelStream().forEach {
+                    //should I hide resources only for grantee depending on authorization? (e.g. poa 1111)
                     if (it.isDebitCard && powerOfAttorney.authorizations.contains(Authorization.DEBIT_CARD)) {
                         debitCards.add(debitCardService.getDebitCardById(it.id))
                     } else if (!it.isDebitCard && powerOfAttorney.authorizations.contains(Authorization.CREDIT_CARD)) {
