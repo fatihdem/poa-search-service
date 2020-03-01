@@ -13,12 +13,12 @@ class RestExceptionHandler: ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(Exception::class)
     fun handleException(e: Exception): ResponseEntity<Response> {
-        return createErrorResponse(e, 500, e.message, HttpStatus.INTERNAL_SERVER_ERROR)
+        return createErrorResponse(500, e.message, HttpStatus.INTERNAL_SERVER_ERROR)
     }
 
     @ExceptionHandler(InternalSearchException::class)
     fun handleInternalSearchException(e: InternalSearchException): ResponseEntity<Response> {
-        return createErrorResponse(e, e.errorCode, e.message, determineStatus(e.errorCode))
+        return createErrorResponse(e.errorCode, e.message, determineStatus(e.errorCode))
     }
 
     private fun determineStatus(errorCode: Int): HttpStatus {
@@ -31,8 +31,8 @@ class RestExceptionHandler: ResponseEntityExceptionHandler() {
 
     }
 
-    private fun createErrorResponse(e: Exception, errorCode: Int, errorMessage: String?, status: HttpStatus ): ResponseEntity<Response> {
-        LOG.error("[$errorCode] $errorMessage", e)
+    private fun createErrorResponse(errorCode: Int, errorMessage: String?, status: HttpStatus ): ResponseEntity<Response> {
+        LOG.error("[$errorCode] $errorMessage")
         return ResponseEntity(Response(errorMessage?:"Something went wrong.", errorCode), status)
     }
 }
