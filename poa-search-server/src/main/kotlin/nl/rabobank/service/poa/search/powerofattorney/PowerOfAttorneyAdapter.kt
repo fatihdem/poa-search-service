@@ -1,11 +1,9 @@
 package nl.rabobank.service.poa.search.powerofattorney
 
-import io.swagger.client.ApiException
 import io.swagger.client.api.PowerOfAttorneyApi
 import nl.rabobank.service.poa.search.exception.DependencyFailedException
 import nl.rabobank.service.poa.search.powerofattorney.model.PowerOfAttorney
 import nl.rabobank.service.poa.search.powerofattorney.model.internalize
-import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 
 @Component

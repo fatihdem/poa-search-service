@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
 @ControllerAdvice
-class RestExceptionHandler: ResponseEntityExceptionHandler() {
+class RestExceptionHandler : ResponseEntityExceptionHandler() {
     private val LOG = LoggerFactory.getLogger(RestExceptionHandler::class.java)
 
     @ExceptionHandler(Exception::class)
@@ -40,9 +40,9 @@ class RestExceptionHandler: ResponseEntityExceptionHandler() {
 
     }
 
-    private fun createErrorResponse(errorCode: Int, errorMessage: String?, status: HttpStatus ): ResponseEntity<Response> {
+    private fun createErrorResponse(errorCode: Int, errorMessage: String?, status: HttpStatus): ResponseEntity<Response> {
         LOG.error("[$errorCode] $errorMessage")
-        return ResponseEntity(Response(errorMessage?:"Something went wrong.", errorCode), status)
+        return ResponseEntity(Response(errorMessage ?: "Something went wrong.", errorCode), status)
     }
 }
 

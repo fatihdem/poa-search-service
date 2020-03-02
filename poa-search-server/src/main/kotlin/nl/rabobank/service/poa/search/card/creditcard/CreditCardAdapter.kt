@@ -12,7 +12,7 @@ class CreditCardAdapter(private val creditCardApi: CreditCardApi) {
     fun getCreditCardById(id: String): CreditCard {
         return try {
             creditCardApi.getCreditCardDetail(id).internalize()
-        }  catch (e: Exception) {
+        } catch (e: Exception) {
             throw DependencyFailedException("Credit Card Service failed while getting Credit Card with id $id.", e)
         }
     }

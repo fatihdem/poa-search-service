@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter
 import io.swagger.client.model.Account as ExternalAccount
 import nl.rabobank.service.poa.search.detailedpowerofattorney.Account as ExposedAccount
 
-data class Account (
+data class Account(
         val id: Int,
         val iban: String,
         val owner: String,

@@ -12,7 +12,7 @@ class DebitCardAdapter(private val debitCardApi: DebitCardApi) {
     fun getDebitCardById(id: String): DebitCard {
         return try {
             debitCardApi.getDebitCardDetail(id).internalize()
-        }  catch (e: Exception) {
+        } catch (e: Exception) {
             throw DependencyFailedException("Debit Card Service failed while getting Debit Card with id $id.", e)
         }
     }

@@ -2,6 +2,7 @@ package nl.rabobank.service.poa.search.card.common
 
 import io.swagger.client.model.Status as ExternalStatus
 import nl.rabobank.service.poa.search.detailedpowerofattorney.Status as ExposedStatus
+
 enum class CardStatus {
     ACTIVE, BLOCKED;
 }

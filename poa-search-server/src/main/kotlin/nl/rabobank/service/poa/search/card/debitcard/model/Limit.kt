@@ -5,17 +5,17 @@ import nl.rabobank.service.poa.search.util.Exposable
 import io.swagger.client.model.Limit as ExternalLimit
 import nl.rabobank.service.poa.search.detailedpowerofattorney.Limit as ExposedLimit
 
-data class Limit (
+data class Limit(
         val amount: Int,
         val periodUnit: PeriodUnit
-): Exposable<ExposedLimit> {
+) : Exposable<ExposedLimit> {
 
-    constructor(limit: ExternalLimit): this(
+    constructor(limit: ExternalLimit) : this(
             amount = limit.limit,
             periodUnit = limit.periodUnit.internalize()
     )
 
-    override fun expose(): ExposedLimit  = ImmutableLimit.builder()
+    override fun expose(): ExposedLimit = ImmutableLimit.builder()
             .limit(this.amount)
             .periodUnit(this.periodUnit.expose())
             .build()

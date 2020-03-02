@@ -35,8 +35,6 @@ class DebitCardAdapterTest {
         assertEquals(Limit(100, PeriodUnit.PER_DAY), debitCardById.posLimit)
     }
 
-
-
     @Test
     fun `get debit card by card id api fails`() {
         val debitCardId = "2222"

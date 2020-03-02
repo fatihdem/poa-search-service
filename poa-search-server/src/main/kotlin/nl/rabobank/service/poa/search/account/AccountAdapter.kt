@@ -15,7 +15,7 @@ class AccountAdapter(private val accountApi: AccountApi) {
         if (accountId.isValidAccountNumber())
             return try {
                 accountApi.getAccountDetail(accountId.toString()).internalize(accountId)
-            }  catch (e: Exception) {
+            } catch (e: Exception) {
                 throw DependencyFailedException("Accounts Service failed while getting account with id $accountId.", e)
             }
         else
