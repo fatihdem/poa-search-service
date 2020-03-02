@@ -22,6 +22,7 @@ class DetailedPowerOfAttorneyService(
     fun getDetailedPowerOfAttorneyByName(clientName: String): List<DetailedPowerOfAttorney> {
         val powerOfAttorneysOfClient = powerOfAttorneyService.getPowerOfAttorneysByClientName(clientName)
 
+        // Should I filter power of attorneys on VIEW? e.g. filter { it.authorizations.contains(Authorization.VIEW) }
         return powerOfAttorneysOfClient.parallelStream().map { powerOfAttorney ->
             val debitCards = mutableListOf<DebitCard>()
             val creditCards = mutableListOf<CreditCard>()
@@ -39,6 +40,7 @@ class DetailedPowerOfAttorneyService(
 
             val account = run { accountService.getAccountDetails(powerOfAttorney.accountIban.toAccountNumber()) }
 
+            //Hard fail on dependency failures because of invalid data is responsibility of resource owner
             DetailedPowerOfAttorney(
                     id = powerOfAttorney.id,
                     grantor = powerOfAttorney.grantor,
@@ -49,5 +51,6 @@ class DetailedPowerOfAttorneyService(
                     creditCards = creditCards,
                     debitCards = debitCards)
         }.toList()
+
     }
 }

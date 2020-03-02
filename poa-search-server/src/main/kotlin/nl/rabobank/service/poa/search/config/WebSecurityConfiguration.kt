@@ -33,7 +33,7 @@ class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
         users["Super duper employee"] = passwordEncoder().encode("pass") + ",ROLE_USER,enabled"
         users["Super duper company"] = passwordEncoder().encode("pass") + ",ROLE_USER,enabled"
         users["Fellowship of the ring"] = passwordEncoder().encode("pass") + ",ROLE_USER,enabled"
-        users["pass"] = passwordEncoder().encode("pass") + ",ROLE_USER,enabled"
+        users["Grantor"] = passwordEncoder().encode("pass") + ",ROLE_USER,enabled"
         return InMemoryUserDetailsManager(users)
     }
 
