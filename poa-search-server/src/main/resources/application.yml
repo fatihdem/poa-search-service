@@ -1,3 +1,4 @@
+#SSL properties, check notes for disabling
 server:
   port: 8443
   ssl:
@@ -7,6 +8,7 @@ server:
     key-alias: powerofattorney
     enabled: true
 
+#Different properties since they are their own microservice
 adapter:
     poa:
       baseUrl: "http://localhost:8080"
@@ -21,6 +23,7 @@ adapter:
       baseUrl: "http://localhost:8080"
       connectionTimeout: 2000
 
+#If enabled, users only can reach to resources that concerns themselves
 application:
   security:
     enabled: true
