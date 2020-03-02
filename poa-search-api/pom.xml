@@ -11,7 +11,7 @@
 
     <groupId>nl.rabobank.service.poa.search</groupId>
     <artifactId>poa-search-api</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <name>poa-search-api</name>
     <description>API Definitions for Power of Attorney Search Service</description>
