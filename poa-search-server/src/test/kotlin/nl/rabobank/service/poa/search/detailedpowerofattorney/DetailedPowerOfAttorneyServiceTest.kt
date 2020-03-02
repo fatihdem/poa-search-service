@@ -88,4 +88,18 @@ class DetailedPowerOfAttorneyServiceTest {
         assertEquals("Invalid Iban: NLINVALID", exception.message)
     }
 
+    @Test
+    fun `get detailed power of attorneys by id successfully`() {
+        val powerOfAttorneyId = "1"
+        whenever(powerOfAttorneyService.getPowerOfAttorneysById(powerOfAttorneyId)).thenReturn(validInternalPowerOfAttorney())
+        whenever(debitCardService.getDebitCardById("2222")).thenReturn(validInternalDebitCard())
+        whenever(creditCardService.getCreditCardById("1111")).thenReturn(validInternalCreditCard())
+        whenever(accountService.getAccountDetails(123456789)).thenReturn(validInternalAccount())
+
+        val detailedPowerOfAttorneyById = detailedPowerOfAttorneyService.getDetailedPowerOfAttorneyByPowerOfAttorneyId(powerOfAttorneyId)
+
+        assertNotNull(detailedPowerOfAttorneyById)
+        assertEquals(powerOfAttorneyId, detailedPowerOfAttorneyById.id)
+    }
+
 }

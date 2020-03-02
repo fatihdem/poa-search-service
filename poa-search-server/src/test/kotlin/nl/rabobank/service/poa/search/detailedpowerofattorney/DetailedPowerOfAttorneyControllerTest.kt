@@ -2,6 +2,7 @@ package nl.rabobank.service.poa.search.detailedpowerofattorney
 
 
 import com.nhaarman.mockito_kotlin.whenever
+import nl.rabobank.service.poa.search.util.getDetailedPowerOfAttorneyByPowerOfAttorneyId
 import nl.rabobank.service.poa.search.util.getDetailedPowerOfAttorneyForClient
 import nl.rabobank.service.poa.search.util.validDetailedPowerOfAttorney
 import org.junit.jupiter.api.Test
@@ -27,7 +28,7 @@ class DetailedPowerOfAttorneyControllerTest {
 
     @Test
     @WithUserDetails("Grantor")
-    fun `status okay`() {
+    fun `status okay for get by client name`() {
         val clientName = "Grantor"
         whenever(detailedPowerOfAttorneyService.getDetailedPowerOfAttorneyByName(clientName)).thenReturn(listOf(validDetailedPowerOfAttorney()))
 
@@ -36,11 +37,29 @@ class DetailedPowerOfAttorneyControllerTest {
 
     @Test
     @WithUserDetails("Super duper employee")
-    fun `status unauthorized`() {
+    fun `status unauthorized for get by client name`() {
         val clientName = "Grantor"
         whenever(detailedPowerOfAttorneyService.getDetailedPowerOfAttorneyByName(clientName)).thenReturn(listOf(validDetailedPowerOfAttorney()))
 
         mockMvc.getDetailedPowerOfAttorneyForClient(clientName).andExpect(MockMvcResultMatchers.status().isUnauthorized)
+    }
+
+    @Test
+    @WithUserDetails("Grantor")
+    fun `status okay fot get by power of attorney id`() {
+        val powerOfAttorneyId = "1"
+        whenever(detailedPowerOfAttorneyService.getDetailedPowerOfAttorneyByPowerOfAttorneyId(powerOfAttorneyId)).thenReturn(validDetailedPowerOfAttorney())
+
+        mockMvc.getDetailedPowerOfAttorneyByPowerOfAttorneyId(powerOfAttorneyId).andExpect(MockMvcResultMatchers.status().isOk)
+    }
+
+    @Test
+    @WithUserDetails("Super duper employee")
+    fun `status unauthorized for get power of attorney id`() {
+        val powerOfAttorneyId = "Grantor"
+        whenever(detailedPowerOfAttorneyService.getDetailedPowerOfAttorneyByPowerOfAttorneyId(powerOfAttorneyId)).thenReturn(validDetailedPowerOfAttorney())
+
+        mockMvc.getDetailedPowerOfAttorneyByPowerOfAttorneyId(powerOfAttorneyId).andExpect(MockMvcResultMatchers.status().isUnauthorized)
     }
 }
 

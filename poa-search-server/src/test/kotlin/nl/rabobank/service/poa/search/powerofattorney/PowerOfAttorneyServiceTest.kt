@@ -69,5 +69,13 @@ class PowerOfAttorneyServiceTest {
         assertEquals(0, powerOfAttorneysByClientName.size)
     }
 
+    @Test
+    fun `get power of attorney by id successfully`() {
+        val powerOfAttorneyId = "1"
+        whenever(powerOfAttorneyAdapter.getPowerOfAttorneyById("1")).thenReturn(validInternalPowerOfAttorney().copy(authorizations = listOf()))
+        val powerOfAttorneyById = powerOfAttorneyService.getPowerOfAttorneysById(powerOfAttorneyId)
+        assertNotNull(powerOfAttorneyById)
+        assertEquals(powerOfAttorneyId, powerOfAttorneyById.id)
+    }
 
 }

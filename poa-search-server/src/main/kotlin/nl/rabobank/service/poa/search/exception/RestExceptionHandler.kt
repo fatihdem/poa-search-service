@@ -1,5 +1,6 @@
 package nl.rabobank.service.poa.search.exception
 
+import io.swagger.client.ApiException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,6 +20,14 @@ class RestExceptionHandler: ResponseEntityExceptionHandler() {
     @ExceptionHandler(InternalSearchException::class)
     fun handleInternalSearchException(e: InternalSearchException): ResponseEntity<Response> {
         return createErrorResponse(e.errorCode, e.message, determineStatus(e.errorCode))
+    }
+
+    @ExceptionHandler(DependencyFailedException::class)
+    fun handleInternalSearchException(dependencyFailedException: DependencyFailedException): ResponseEntity<Response> {
+        return if (dependencyFailedException.exception is ApiException) {
+            val statusCode = (dependencyFailedException.exception as ApiException).code
+            createErrorResponse(statusCode, dependencyFailedException.message, determineStatus(statusCode * 1000))
+        } else createErrorResponse(500, dependencyFailedException.message, HttpStatus.INTERNAL_SERVER_ERROR)
     }
 
     private fun determineStatus(errorCode: Int): HttpStatus {

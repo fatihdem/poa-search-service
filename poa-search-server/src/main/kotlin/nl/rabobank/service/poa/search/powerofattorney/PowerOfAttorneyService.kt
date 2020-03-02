@@ -21,4 +21,8 @@ class PowerOfAttorneyService(private val powerOfAttorneyAdapter: PowerOfAttorney
                 && powerOfAttorney.grantor != powerOfAttorney.grantee
                 && powerOfAttorney.authorizations.isNotEmpty()
     }
+
+    fun getPowerOfAttorneysById(powerOfAttorneyId: String): PowerOfAttorney {
+        return powerOfAttorneyAdapter.getPowerOfAttorneyById(powerOfAttorneyId)
+    }
 }
