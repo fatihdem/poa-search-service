@@ -2,7 +2,10 @@ package nl.rabobank.service.poa.search.detailedpowerofattorney
 
 import nl.rabobank.service.poa.search.card.common.CardStatus
 import nl.rabobank.service.poa.search.card.common.CardType
-import nl.rabobank.service.poa.search.util.*
+import nl.rabobank.service.poa.search.util.validDetailedPowerOfAttorney
+import nl.rabobank.service.poa.search.util.validInternalAccount
+import nl.rabobank.service.poa.search.util.validInternalCreditCard
+import nl.rabobank.service.poa.search.util.validInternalDebitCard
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.junit.jupiter.MockitoExtension
