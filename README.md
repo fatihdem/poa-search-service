@@ -1,5 +1,9 @@
 # Power of Attorney Search Service
 
+This is a service that let's clients search their own detailed Power of Attorney information by using multiple microservices.
+Server side is written in Kotlin where api to expose resources is in Java. Used Maven for build automation and Spring Boot to jump start Spring framework. 
+
+
 ### Running the application (locally):
 
 Make sure underlying microservices are running (power-of-attorney-json-stub )
@@ -33,12 +37,17 @@ Users are hardcoded but can be easily replaced with any authentication system th
 ## Notes:
 ### Changes on apidef.yaml from Power of Attorney service
 *Added /v1/account endpoint and objects for the endpoint
+
 *Status object for both /v1/credit-card and /v1/debit-card endpoints
+
 *In /v1/credit-card there was a typo in one field, changed monhtly to monthly
+
 *I, intentionally, did not make any changes in data, since I thought data is responsibility of dependency
+
 *Skipped trivial typos that are functionally not a problem like comments or operationId in Credit Card API
 
-####Thanks for taking the time and assessing my assignment.
-####Hope to hear you from soon.
+
+#####Thanks for taking the time and assessing my assignment.
+#####Hope to hear you from soon.
 #####Best wishes, Fatih
  
