@@ -37,7 +37,7 @@ data class CreditCard(
                 .cardHolder(this.cardHolder)
                 .monthlyLimit(this.monthlyLimit)
                 .build()
-    } else {
+    } else
         ImmutableCard.builder()
                 .id(this.id)
                 .type(CardType.CREDIT_CARD.name)
